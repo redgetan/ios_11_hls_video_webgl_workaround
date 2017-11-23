@@ -1,12 +1,18 @@
 "use strict";
 
 function main() {
-  var video = document.getElementById("source_video");
-  video.addEventListener("loadeddata", function() {
-    var renderer = new Renderer(video);
-    renderer.setup();
-    renderer.drawVideo();
-  });
+  if (!isSafari()) {
+    document.body.innerText = "Please use a safari browser to see the example";
+    document.body.style.fontSize = "20px";
+    document.body.style.padding = "10px";
+  } else {
+    var video = document.getElementById("source_video");
+    video.addEventListener("loadeddata", function() {
+      var renderer = new Renderer(video);
+      renderer.setup();
+      renderer.drawVideo();
+    });
+  }
 }
 
 function Renderer(videoElement) {
@@ -153,6 +159,13 @@ function Renderer(videoElement) {
     ]), gl.STATIC_DRAW);
   }
 
+}
+
+function isSafari() {
+  // https://stackoverflow.com/a/31732310
+  var isSafari = navigator.vendor && navigator.vendor.indexOf('Apple') > -1 &&
+               navigator.userAgent && !navigator.userAgent.match('CriOS');
+  return isSafari;
 }
 
 main();

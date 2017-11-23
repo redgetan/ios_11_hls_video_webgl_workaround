@@ -1,6 +1,6 @@
 ### Demo
 
-http://redgetan.cc/ios_11_hls_webgl_canvas_workaround
+http://redgetan.cc/demo/ios_11_hls_webgl_canvas_workaround/index.html
 
 ### Description
 
